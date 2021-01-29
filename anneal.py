@@ -101,6 +101,7 @@ class SimAnneal(object):
 
         print("Best fitness obtained: ", self.best_fitness)
         improvement = 100 * (self.fitness_list[0] - self.best_fitness) / (self.fitness_list[0])
+        make_csv('{}, path: {}'.format(self.best_fitness, self.best_solution) ,'result.csv')
         print(f"Improvement over greedy heuristic: {improvement : .2f}%")
 
     def batch_anneal(self, times=10):
@@ -127,4 +128,14 @@ class SimAnneal(object):
         plt.plot([i for i in range(len(self.fitness_list))], self.fitness_list)
         plt.ylabel("Fitness")
         plt.xlabel("Iteration")
-        plt.show()
+        # plt.show()
+def make_csv(data, file_name):
+    """
+    Writes data to csv file.
+    """
+    with open(file_name, 'a') as f:
+        f.write(data)
+        f.write('\n')
+        # writer = file.writer(f)
+        # writer.writerow(data)
+    f.close()
