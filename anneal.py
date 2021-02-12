@@ -128,7 +128,7 @@ class SimAnneal(object):
         plt.plot([i for i in range(len(self.fitness_list))], self.fitness_list)
         plt.ylabel("Fitness")
         plt.xlabel("Iteration")
-        # plt.show()
+        plt.show()
 def make_csv(data, file_name):
     """
     Writes data to csv file.
